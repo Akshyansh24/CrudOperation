@@ -1,0 +1,33 @@
+<%- include ("components/header")%>
+
+    <div class="product-section">
+      <div class="col-md-12">
+        <h1>Our Products</h1>
+      </div>
+      <div class="container">
+          <% if (products!="") { %>
+            <div class="row">
+                <% products.forEach(element => { %>
+                  <div class="col-md-3">
+                    <div class="card product-card" style="width: 18rem;">
+                      <img class="card-img-top" src="/images/product-image.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= element.title %></h5>
+                          <p class="card-text"><Span>Price -</Span><%= element.price %></p>
+                          <a href="/addcart/<%= element._id %>" class="btn btn-primary add-cart">Add To Cart</a>
+                        </div>
+                      </div>
+                  </div>
+                <% }); %>
+            </div>
+          <%  } %>
+      
+       
+      </div>
+    </div>
+
+    <script>
+
+    </script>
+        <!-- Footer -->
+        <%- include ("components/footer")%>
