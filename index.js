@@ -6,10 +6,8 @@ require('./config/database')
 const products = require("./models/productModel");
 const cart = require("./models/carttModel");
 
+// Port Number
 const port = 5000
-
-
-
 
 // middleware
 app.use(express.static('public'));
@@ -17,12 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended:true}));
-
 app.set('view engine', 'ejs');
-
-// app.use("/", (req,res)=>{
-//     res.send("welcome")
-// })
 
 
 // Add Product
@@ -43,16 +36,18 @@ app.get("/", async(req, res)=>{
 })
 
 
-
+// Render Ejs 
 app.get("/add",(req, res)=>{
     res.render("addProduct")
 })
+
 
 // Get All Product detail
 app.get("/edit", async(req, res)=>{
     const allproducts = await products.find({})
     res.render("editProduct",{title:"Shop-Now", products: allproducts })
  })
+
 
 //  For Get Detail of Particular Product
  app.get("/editproduct/:id", async(req, res)=>{
